@@ -12,7 +12,7 @@ Chrome DevTools (for testing responsiveness) <br>
 Updated CSS with responsive design. <br>
 Fully functional layout that works on mobile devices. <br>
 
-📌 Steps Followed
+📌 Steps Followed <br>
 🔍 Analyze HTML
 Open the existing HTML page in VS Code. <br>
 Identify fixed-width elements, large images, and navigation bars.
