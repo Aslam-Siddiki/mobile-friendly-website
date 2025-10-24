@@ -1,7 +1,9 @@
 * {
-  margin: 0;
-  padding: 0;
-  font-family: Muli, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 0;
+    padding: 0;
+    /* Using Roboto Condensed as the primary font based on existing links */
+    font-family: 'Roboto Condensed', sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    box-sizing: border-box;
 }
 
 html, body {
@@ -9,12 +11,11 @@ html, body {
     background-color: azure;
 }
 
-
-
+/* Desktop Navigation Bar (Visible by Default) */
 .navbar {
     height: 5rem;
     width: 100%;
-    background-color: #bd5d38;
+    background-color: #bd5d38; /* Primary Brand Color */
     color: white;
     font-size: 20px;
     font-weight: 600;
@@ -27,12 +28,54 @@ html, body {
     z-index: 1000;
 }
 
+.navbar .nav-link {
+    padding: 0 15px;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
 
+.navbar .nav-link:hover {
+    opacity: 0.8;
+}
 
+/* Hide mobile elements by default */
+.side-navbar, .side-bar {
+    display: none;
+}
 
-@media(max-width:640px){
-    .navbar{
+/* Content Area Desktop Styles */
+.content {
+    background-color: azure;
+    padding: 0rem 3rem 1rem 3rem;
+    position: relative;
+    top: 5rem;
+    font-size: 25px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Content Typography */
+.content p {
+    padding-top: 20px;
+    line-height: 1.6;
+    font-size: 1rem;
+    color: #333;
+}
+
+/* ------------------------------------- */
+/* 2. MOBILE STYLES (Media Query: max-width 640px) */
+/* ------------------------------------- */
+
+@media(max-width: 640px){
+    
+    /* HIDE DESKTOP NAVBAR */
+    .navbar {
         display: none;
+    }
+
+    /* Show Mobile Elements */
+    .side-navbar, .side-bar {
+        display: block;
     }
 
     .main-box {
@@ -45,19 +88,25 @@ html, body {
         position: absolute;
         flex: 1;
         overflow-y: auto;
-        overflow-x: auto;
+        overflow-x: hidden; /* Prevent horizontal scroll */
         margin-top: 5rem;
         width: 100vw;
-        /* padding-left: 20rem; */
+        padding: 1rem; /* Adjust content padding for small screens */
         transition: padding 0.7s ease;
+        font-size: 18px;
+    }
+    
+    /* Ensure images scale correctly on mobile */
+    .content img {
+        max-width: 100%;
+        height: auto;
+        display: block;
     }
 
-    .side-bar.hidden ~ .content {
-        padding-left: 1rem; 
-    }
 
+    /* Mobile Header Bar (Fixed at Top) */
     .side-navbar {
-        height: 80px;
+        height: 5rem; /* Reduced from 80px to match desktop height */
         width: 100%;
         background-color: #bd5d38;
         color: white;
@@ -70,78 +119,73 @@ html, body {
         border-bottom: black;
         font-style:normal;
         position: fixed;
+        top: 0;
         z-index: 1000;
     }
 
+    /* Hamburger Icon Boundary */
     .icon-boundry {
         height: 40px;
         width: 50px;
-        opacity:0.7;
-        border: 1px solid #adb5bd;;
+        opacity: 0.9;
+        border: 1px solid #adb5bd;
         border-radius: 5px;
         position: relative;
-        left: 20px;
         padding-top: 5px;
         padding-right: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: border 0.3s;
     }
 
     .icon-boundry:hover {
-        height: 40px;
-        width: 50px;
-        opacity:0.7;
-        border: 3px solid #dee2e6;;
-        border-radius: 5px;
-        position: relative;
-        left: 20px;
+        opacity:1;
+        border: 3px solid #dee2e6;
     }
 
     .side-navbar .nav-link .fa-bars{
         font-size: 35px;
         opacity:1;
-        position: absolute;
-        left: 7px;
     }
 
-    .side-navbar .nav-link .fa-bars:hover{
-        cursor: pointer;
-    }
-
+    /* Collapsible Sidebar Menu */
     .side-bar{
         position: fixed;
         top: 5rem;
         left: 0;
         height: calc(100% - 5rem);
-        width: 20rem;
+        width: 20rem; /* Fixed width sidebar on mobile */
         background-color: #bd5d38;
         color: white;
-        transition: all 0.7s ease;
+        transition: transform 0.7s ease; /* Using transform for smooth animation */
         z-index: 900;
+        overflow-y: auto; /* Allow scrolling if links exceed screen height */
     }
 
     .sidebar-link {
         height: 5rem;
-        width: 19.75rem;
-        text-align: center;
+        width: 100%;
         display: flex;
-        justify-content: stretch;
         align-items: center;
         font-size: 1.5rem;
         font-style: normal;
         font-weight: 400;
-        margin-right: 20px;
+        padding-left: 20px;
+        cursor: pointer;
     }
 
     .icon {
-        margin: 0 2rem 0 2.5rem;
+        margin: 0 1rem 0 1.5rem;
     }
-
 
     .sidebar-link:hover {
-        border: 2px solid white;
+        background-color: rgba(255, 255, 255, 0.1);
         border-radius: 5px;
-        box-shadow: 2px 1px 2px #bd5d38;
     }
-
+    
+    /* Social Media Icons (Fixed to Bottom of Sidebar) */
     .social-media {
         display: flex;
         flex-direction: row;
@@ -149,50 +193,40 @@ html, body {
         align-items: center;
         font-size: 1.5rem;
         font-weight: 500;
-        margin-top: auto;
-        position: relative;
-        top: 2rem;
-        
+        position: absolute;
+        bottom: 2rem;
+        width: 100%;
     }
 
     .social-media i {
-        margin-right: 1rem;
+        margin: 0 0.5rem;
         opacity: 0.7;
-        margin-top: auto;
+        transition: opacity 0.3s;
+        cursor: pointer;
     }
 
     .social-media i:hover {
         opacity: 1;
     }
 
+    /* Hidden State (Off-screen) */
     .hidden{
-        position: relative;
-        left: -350px;
+        transform: translateX(-100%); /* Slide completely off-screen */
     }
 
+    /* Content Margin when Sidebar is Closed */
+    .side-bar.hidden ~ .content {
+        padding-left: 1rem; 
+    }
 }
 
-@media (min-width:640px){
-    .side-navbar{
-        display: none;
-    }
+/* ------------------------------------- */
+/* 3. DESKTOP-ONLY STYLES (min-width 641px) */
+/* ------------------------------------- */
 
-    .side-bar{
-        display: none;
+@media (min-width: 641px){
+    /* Mobile elements MUST be hidden on desktop */
+    .side-navbar, .side-bar {
+        display: none !important;
     }
-
-    .content {
-        flex: 1;
-        background-color: azure;
-        padding: 0rem 3rem 1rem 3rem;
-        position: relative;
-        top: 5rem;;
-        font-size: 25px;
-    }
-
-    .hidden{
-        transition: all 0.3s linear;
-        display: none;
-    }
-
 }
