@@ -51,10 +51,10 @@ Adjust padding, margins, and positions as needed.
 
 ## 📱 Live Demo
 
-### Mobile View
+### Mobile View 1
 ![Mobile View](imgA.png)
 
-### Mobile View
+### Mobile View 2
 ![Mobile View](imgB.png)
 
 ### Desktop View
@@ -66,5 +66,5 @@ Adjust padding, margins, and positions as needed.
 
 Aslam Siddiki
 
-Web Developer| MERN Stack Intern <br>
+Web Developer | MERN Stack Intern <br>
 📧 aslam.sidd888@gmail.com
