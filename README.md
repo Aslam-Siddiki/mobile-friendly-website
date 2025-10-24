@@ -52,10 +52,10 @@ Adjust padding, margins, and positions as needed.
 ## 📱 Live Demo
 
 ### Mobile View
-![Mobile View](img1.png)
+![Mobile View](imgA.png)
 
 ### Mobile View
-![Mobile View](img2.png)
+![Mobile View](imgB.png)
 
 ### Desktop View
 ![Desktop View](fullDemo.png)
